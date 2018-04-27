@@ -19,7 +19,7 @@ import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/paypal")
 public class PaymentController {
 	
 	public static final String PAYPAL_SUCCESS_URL = "pay/success";
@@ -37,8 +37,8 @@ public class PaymentController {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "pay")
 	public String pay(HttpServletRequest request){
-		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
-		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
+		String cancelUrl = URLUtils.getBaseURl(request) + "/paypal/" + PAYPAL_CANCEL_URL;
+		String successUrl = URLUtils.getBaseURl(request) + "/paypal/" + PAYPAL_SUCCESS_URL;
 		try {
 			Payment payment = paypalService.createPayment(
 					4.00, 
